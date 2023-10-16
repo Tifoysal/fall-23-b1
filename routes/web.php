@@ -22,3 +22,5 @@ Route::get('/',[HomeController::class,'home']);
 Route::get('/category/list',[CategoryController::class,'list']);
 
 Route::get('/brand/list',[BrandController::class,'list']);
+
+Route::get('/category/form',[CategoryController::class,'createForm']);

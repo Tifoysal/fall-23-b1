@@ -1,7 +1,9 @@
 @extends('admin.master')
 
 @section('content')
+<h1>Category List</h1>
 
+<a href="{{url('/category/form')}}" class="btn btn-success">Create New Category</a>
 <table class="table">
   <thead>
     <tr>

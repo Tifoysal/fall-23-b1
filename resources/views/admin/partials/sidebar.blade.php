@@ -10,7 +10,7 @@
           </li>
 
 		  <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{url('/category/list')}}">
+            <a class="nav-link" aria-current="page" href="{{route('category.list')}}">
               <span data-feather="home" class="align-text-bottom"></span>
               Categories
             </a>

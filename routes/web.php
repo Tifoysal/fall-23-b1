@@ -26,3 +26,7 @@ Route::get('/brand/list',[BrandController::class,'list']);
 Route::get('/category/form',[CategoryController::class,'createForm']);
 
 Route::post('/category/store',[CategoryController::class, 'store'])->name('category.store');
+
+Route::get('/brand/create',[BrandController::class,'createForm'])->name('brand.create');
+
+Route::post('/brand/store',[BrandController::class, 'store'])->name('brand.store');

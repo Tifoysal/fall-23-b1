@@ -10,7 +10,9 @@ class CategoryController extends Controller
     
     public function list()
     {
-       return view('admin.pages.category.list');
+
+        $categories=Category::all();
+       return view('admin.pages.category.list',compact('categories'));
     }
 
     

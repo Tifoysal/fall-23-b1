@@ -7,19 +7,19 @@
 
 
 
-<form action="" method="post">
-    @csrf
+<form action="{{route('product.store')}}" method="post">
+   @csrf
   <div class="form-group">
     <label for="">Enter Product Name:</label>
-    <input type="text" class="form-control" id="" placeholder="Enter name" name="category_name">
+    <input type="text" class="form-control" id="" placeholder="Enter name" name="product_name">
   </div>
 
   <div class="form-group">
     <label for="">Select Brand:</label>
-   <select class="form-control" name="" id="">
+   <select class="form-control" name="brand_id" id="">
 
     @foreach ($brands as $brand)
-    <option value="">{{$brand->name}}</option>
+    <option value="{{$brand->id}}">{{$brand->name}}</option>
     @endforeach
 
    </select>
@@ -27,10 +27,10 @@
 
   <div class="form-group">
     <label for="">Select Category:</label>
-   <select class="form-control" name="" id="">
+   <select class="form-control" name="category_id" id="">
 
     @foreach ($categories as $cat )
-    <option value="">{{$cat->name}}</option>
+    <option value="{{$cat->id}}">{{$cat->name}}</option>
     @endforeach
    
    </select>
@@ -38,12 +38,12 @@
 
   <div class="form-group">
     <label for="">Enter Price: </label>
-    <input type="number" class="form-control" placeholder="Enter price">
+    <input type="number" class="form-control" placeholder="Enter price" name="product_price">
   </div>
 
   <div class="form-group">
     <label for="">Enter Stock: </label>
-    <input type="number" class="form-control" placeholder="Enter Stock">
+    <input type="number" class="form-control" placeholder="Enter Stock" name="product_stock">
   </div>
 
 

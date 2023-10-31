@@ -11,12 +11,16 @@
    @csrf
   <div class="form-group">
     <label for="">Enter Product Name:</label>
-    <input type="text" class="form-control" id="" placeholder="Enter name" name="product_name">
+    <input required type="text" class="form-control" id="" placeholder="Enter name" name="product_name">
+    @error('product_name')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+
   </div>
 
   <div class="form-group">
     <label for="">Select Brand:</label>
-   <select class="form-control" name="brand_id" id="">
+   <select required class="form-control" name="brand_id" id="">
 
     @foreach ($brands as $brand)
     <option value="{{$brand->id}}">{{$brand->name}}</option>
@@ -27,7 +31,7 @@
 
   <div class="form-group">
     <label for="">Select Category:</label>
-   <select class="form-control" name="category_id" id="">
+   <select required class="form-control" name="category_id" id="">
 
     @foreach ($categories as $cat )
     <option value="{{$cat->id}}">{{$cat->name}}</option>
@@ -38,12 +42,17 @@
 
   <div class="form-group">
     <label for="">Enter Price: </label>
-    <input type="number" class="form-control" placeholder="Enter price" name="product_price">
+    <input required type="number" class="form-control" placeholder="Enter price" name="product_price">
+    
+    @error('product_price')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    
   </div>
 
   <div class="form-group">
     <label for="">Enter Stock: </label>
-    <input type="number" class="form-control" placeholder="Enter Stock" name="product_stock">
+    <input required type="number" class="form-control" placeholder="Enter Stock" name="product_stock">
   </div>
 
 

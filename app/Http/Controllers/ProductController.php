@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -13,7 +14,8 @@ class ProductController extends Controller
 
     public function list()
     {
-      $products=Product::paginate(5);
+      $products=Product::with(['category','brand'])->paginate(5);
+      // dd($products);
       return view('admin.pages.product.list',compact('products'));
     }
 
@@ -27,6 +29,23 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+
+      $validate=Validator::make($request->all(),[
+            'brand_id'=>'required',
+            'category_id'=>'required',
+            'product_name'=>'required',
+            'product_price'=>'required|numeric|min:10',
+            'product_stock'=>'required|numeric',
+      ]);
+
+      if($validate->fails())
+      {
+
+        // notify()->error($validate->getMessageBag());
+        // return redirect()->back();
+
+        return redirect()->back()->withErrors($validate);
+      }
 
       Product::create([
                 'brand_id'=>$request->brand_id,

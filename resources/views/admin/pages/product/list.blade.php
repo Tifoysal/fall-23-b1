@@ -29,8 +29,8 @@
       <th scope="row">{{$key+1}}</th>
       <!-- <th scope="row">{{$product->id}}</th> -->
       <td>{{$product->name}}</td>
-      <td>{{$product->brand_id}}</td>
-      <td>{{$product->category_id}}</td>
+      <td>{{$product->brand->name}}</td>
+      <td>{{$product->category->name}}</td>
       <td>image here</td>
       <td>{{$product->price}} .BDT</td>
       <td>{{$product->stock}}</td>

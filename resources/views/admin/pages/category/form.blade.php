@@ -6,7 +6,7 @@
     @csrf
   <div class="form-group">
     <label for="">Enter Category Name:</label>
-    <input type="text" class="form-control" id="" placeholder="Enter name" name="category_name">
+    <input required type="text" class="form-control" id="" placeholder="Enter name" name="category_name">
   </div>
 
   <div class="form-group">

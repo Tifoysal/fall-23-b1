@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -24,6 +25,19 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+
+
+        $validate=Validator::make($request->all(),
+        [
+            'category_name'=>'required',
+            'category_description'=>'required',
+        ]);
+
+        if($validate->fails())
+        {
+            // dd($validate->getMessageBag());
+            return redirect()->back();
+        }
         //database create (one time) (done)
             
         //table create (table generated from migration )---done

@@ -30,6 +30,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/logout',[UserController::class, 'logout'])->name('admin.logout');
     Route::get('/', [HomeController::class, 'home'])->name('dashboard');
 
+    Route::get('/users',[UserController::class, 'list'])->name('users.list');
+    Route::get('/users/create',[UserController::class, 'createForm'])->name('users.create');
+
+    Route::post('/users/store',[UserController::class, 'store'])->name('users.store');
+
     Route::get('/category/list', [CategoryController::class, 'list'])->name('category.list');
 
     Route::get('/brand/list', [BrandController::class, 'list']);

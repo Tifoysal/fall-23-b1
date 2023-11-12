@@ -17,7 +17,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{url('/brand/list')}}">
+            <a class="nav-link" aria-current="page" href="{{route('brand.list')}}">
               <span data-feather="home" class="align-text-bottom"></span>
               Brands
             </a>

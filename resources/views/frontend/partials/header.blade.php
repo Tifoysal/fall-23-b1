@@ -24,6 +24,17 @@
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </form>
+
+                @guest
+                    <a href="{{route('customer.login')}}" style="margin-left:5px ;">Login</a>
+                    <span style="padding: 5px;">|</span>
+                    <a href="{{route('customer.registration')}}">Registration</a>
+                @endguest
+
+                @auth
+                <a href="{{route('customer.logout')}}">Logout</a>
+                @endauth
+
                 </div>
             </div>
         </nav>

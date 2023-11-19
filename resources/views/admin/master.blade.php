@@ -8,7 +8,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
     <title>Dashboard Template · Bootstrap v5.2</title>
-
+    @notifyCss
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
 
 
@@ -90,6 +90,7 @@
   <div class="row">
 
   @include('admin.partials.sidebar')
+  @include('notify::components.notify')
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       
@@ -107,5 +108,7 @@
 	  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" >
 
 	  </script><script src="https://getbootstrap.com/docs/5.2/examples/dashboard/dashboard.js"></script>
-  </body>
+        @notifyJs
+ 
+</body>
 </html>

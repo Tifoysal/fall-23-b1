@@ -20,6 +20,61 @@ class ProductController extends Controller
       return view('admin.pages.product.list',compact('products'));
     }
 
+    public function delete($id)
+    {
+      $product=Product::find($id);
+      if($product)
+      {
+        $product->delete();
+      }
+
+      notify()->success('Product Deleted Successfully.');
+      return redirect()->back();
+    }
+
+    public function edit($id)
+    {
+      $product=Product::find($id);
+
+      $brands=Brand::all();
+      $categories=Category::all();
+
+      return view('admin.pages.product.edit',compact('brands','categories','product'));
+     
+    }
+
+    public function update(Request $request,$id)
+    {
+        $product=Product::find($id);
+
+        if($product)
+        {
+
+          $fileName=$product->image;
+          if($request->hasFile('image'))
+          {
+              $file=$request->file('image');
+              $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
+             
+              $file->storeAs('/uploads',$fileName);
+    
+          }
+
+          $product->update([
+                'brand_id'=>$request->brand_id,
+                'category_id'=>$request->category_id,
+                'name'=>$request->product_name,
+                'price'=>$request->product_price,
+                'description'=>$request->product_description,
+                'stock'=>$request->product_stock,
+                'image'=>$fileName
+          ]);
+
+          notify()->success('Product updated successfully.');
+          return redirect()->back();
+        }
+    }
+
 
     public function createForm()
     {

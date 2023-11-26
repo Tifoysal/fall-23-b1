@@ -58,7 +58,7 @@ class UserController extends Controller
     public function list(){
 
         $users=User::all();
-        // dd($users);
+        
         return view('admin.pages.users.list',compact('users'));
     }
 

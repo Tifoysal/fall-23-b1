@@ -52,7 +52,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => 'auth'], function () {
 
-        Route::group(['middleware' => 'checkAdmin'], function () {
+        Route::group(['middleware' => 'checkAdmin'], function () { 
 
             Route::get('/logout', [UserController::class, 'logout'])->name('admin.logout');
             Route::get('/', [HomeController::class, 'home'])->name('dashboard');

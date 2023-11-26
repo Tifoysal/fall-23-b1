@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Frontend\CustomerController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
+use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,8 @@ Route::get('/single-product/{id}', [FrontendProductController::class, 'singlePro
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [CustomerController::class, 'profile'])->name('profile.view');
     Route::get('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
+    Route::get('/buy-now/{product_id}',[OrderController::class,'buyNow'])->name('buy.now');
+    Route::get('/cancel-order/{product_id}',[OrderController::class,'cancelOrder'])->name('order.cancel');
 });
 
 

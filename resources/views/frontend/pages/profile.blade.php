@@ -90,11 +90,42 @@
                             </div>
                         </div>
 
-
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
+    <hr>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Product</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    @foreach ($orders as $order)
+        
+   
+    <tr>
+      <th scope="row">{{$order->id}}</th>
+      <td>{{$order->created_at}}</td>
+      <td>{{$order->product_id}}</td>
+      <td>{{$order->status}}</td>
+      <td>
+        @if($order->status=='pending')
+        <a class="btn btn-danger" href="{{route('order.cancel',$order->id)}}">Cancel Order</a>
+        @endif  
+    </td>
+    </tr>
+
+    @endforeach
+   
+  </tbody>
+</table>
 @endsection

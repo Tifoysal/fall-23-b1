@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CustomerController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\Frontend\OrderController;
@@ -35,6 +36,10 @@ Route::get('/login', [CustomerController::class, 'login'])->name('customer.login
 Route::post('/login', [CustomerController::class, 'doLogin'])->name('customer.do.login');
 
 Route::get('/single-product/{id}', [FrontendProductController::class, 'singleProductView'])->name('single.product');
+
+//cart routes here
+Route::get('/cart-view',[CartController::class,'viewCart'])->name('cart.view');
+Route::get('/add-to-cart/{product_id}',[CartController::class,'addToCart'])->name('add.toCart');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [CustomerController::class, 'profile'])->name('profile.view');

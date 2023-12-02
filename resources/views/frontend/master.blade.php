@@ -13,8 +13,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{url('/css/frontend/css/style.css')}}" rel="stylesheet" />
-     
-
+    
     
     </head>
     <body>
@@ -27,8 +26,13 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                    <h1 class="display-4 fw-bolder">Search your product(s)</h1>
+                    
+                    <form action="{{route('product.search')}}" method="get">
+                        <input type="text" class="form-control" placeholder="Search..." name="search">
+                        <button type="submit" class="btn btn-success">Search</button>
+                    </form>
+                   
                 </div>
             </div>
         </header>

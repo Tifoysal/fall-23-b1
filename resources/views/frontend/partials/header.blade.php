@@ -17,13 +17,19 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
+                  
+                        <a class="btn btn-outline-dark" href="{{route('cart.view')}}">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">
+                                @if(session()->has('vcart'))
+                                    {{ count(session()->get('vcart')) }}
+                                @else
+                                0
+                                @endif
+                            </span>
+                        </a>
+                  
 
                 @guest
                     <a href="{{route('customer.login')}}" style="margin-left:5px ;">Login</a>

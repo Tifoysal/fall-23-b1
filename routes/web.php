@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 //website's routes
 
 Route::get('/', [FrontendHomeController::class, 'home'])->name('home');
+Route::get('/search-product',[FrontendHomeController::class,'search'])->name('product.search');
 
 Route::get('/registration', [CustomerController::class, 'registration'])->name('customer.registration');
 Route::post('/registration', [CustomerController::class, 'store'])->name('customer.store');

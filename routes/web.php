@@ -44,6 +44,11 @@ Route::get('/add-to-cart/{product_id}',[CartController::class,'addToCart'])->nam
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [CustomerController::class, 'profile'])->name('profile.view');
+
+    Route::get('/checkout',[CartController::class,'checkout'])->name('checkout');
+   
+    Route::post('/order-place',[OrderController::class, 'orderPlace'])->name('order.place');
+
     Route::get('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
     Route::get('/buy-now/{product_id}',[OrderController::class,'buyNow'])->name('buy.now');
     Route::get('/cancel-order/{product_id}',[OrderController::class,'cancelOrder'])->name('order.cancel');

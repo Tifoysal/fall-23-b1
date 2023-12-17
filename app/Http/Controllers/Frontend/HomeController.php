@@ -31,6 +31,6 @@ class HomeController extends Controller
        
 
         
-        return view("frontend.pages.search",compact('products'));
+        return view("frontend.pages.search",compact('products')); 
     }
 }

@@ -45,7 +45,7 @@ class OrderController extends Controller
 
         session()->forget('vcart');
         notify()->success('Order placed success.');
-        return redirect()->back();
+        return redirect()->back();   
 
 
 

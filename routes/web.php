@@ -40,6 +40,9 @@ Route::post('/login', [CustomerController::class, 'doLogin'])->name('customer.do
 
 Route::get('/single-product/{id}', [FrontendProductController::class, 'singleProductView'])->name('single.product');
 
+Route::get('/product-under-cagtegory/{cat_id}',[FrontendHomeController::class,'productsUnderCategory'])->name('products.under.category');
+
+
 //cart routes here
 Route::get('/cart-view',[CartController::class,'viewCart'])->name('cart.view');
 Route::get('/add-to-cart/{product_id}',[CartController::class,'addToCart'])->name('add.toCart');

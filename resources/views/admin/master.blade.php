@@ -102,13 +102,18 @@
 </div>
 
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
     <script src="https://getbootstrap.com/docs/5.2/dist/js/bootstrap.bundle.min.js" ></script>
 
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" ></script>
 	  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" >
 
-	  </script><script src="https://getbootstrap.com/docs/5.2/examples/dashboard/dashboard.js"></script>
+	  </script>
+    <script src="https://getbootstrap.com/docs/5.2/examples/dashboard/dashboard.js"></script>
         @notifyJs
+
+@stack('yourJsCode')
  
 </body>
 </html>

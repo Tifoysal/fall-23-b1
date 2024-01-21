@@ -49,26 +49,26 @@ Route::get('/add-to-cart/{product_id}',[CartController::class,'addToCart'])->nam
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [CustomerController::class, 'profile'])->name('profile.view');
-
+    Route::get('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
     Route::get('/checkout',[CartController::class,'checkout'])->name('checkout');
    
     Route::post('/order-place',[OrderController::class, 'orderPlace'])->name('order.place');
 
     // SSLCOMMERZ Start
-Route::get('/example1', [FrontendSslCommerzPaymentController::class, 'exampleEasyCheckout']);
-Route::get('/example2', [FrontendSslCommerzPaymentController::class, 'exampleHostedCheckout']);
+    Route::get('/example1', [FrontendSslCommerzPaymentController::class, 'exampleEasyCheckout']);
+    Route::get('/example2', [FrontendSslCommerzPaymentController::class, 'exampleHostedCheckout']);
 
-Route::post('/pay', [FrontendSslCommerzPaymentController::class, 'index']);
-Route::post('/pay-via-ajax', [FrontendSslCommerzPaymentController::class, 'payViaAjax']);
+    Route::post('/pay', [FrontendSslCommerzPaymentController::class, 'index']);
+    Route::post('/pay-via-ajax', [FrontendSslCommerzPaymentController::class, 'payViaAjax']);
 
-Route::post('/success', [FrontendSslCommerzPaymentController::class, 'success']);
-Route::post('/fail', [FrontendSslCommerzPaymentController::class, 'fail']);
-Route::post('/cancel', [FrontendSslCommerzPaymentController::class, 'cancel']);
+    Route::post('/success', [FrontendSslCommerzPaymentController::class, 'success']);
+    Route::post('/fail', [FrontendSslCommerzPaymentController::class, 'fail']);
+    Route::post('/cancel', [FrontendSslCommerzPaymentController::class, 'cancel']);
 
-Route::post('/ipn', [FrontendSslCommerzPaymentController::class, 'ipn']);
-//SSLCOMMERZ END
+    Route::post('/ipn', [FrontendSslCommerzPaymentController::class, 'ipn']);
+    //SSLCOMMERZ END
 
-    Route::get('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
+ 
     Route::get('/buy-now/{product_id}',[OrderController::class,'buyNow'])->name('buy.now');
     Route::get('/cancel-order/{product_id}',[OrderController::class,'cancelOrder'])->name('order.cancel');
 });

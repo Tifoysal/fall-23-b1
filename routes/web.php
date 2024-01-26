@@ -29,7 +29,10 @@ use Illuminate\Support\Facades\Route;
 
 //website's routes
 
+Route::group(['middleware'=>'locale'],function(){
+
 Route::get('/', [FrontendHomeController::class, 'home'])->name('home');
+Route::get('/change-lang/{locale}', [FrontendHomeController::class, 'changeLang'])->name('change.lang');
 Route::get('/search-product',[FrontendHomeController::class,'search'])->name('product.search');
 
 Route::get('/registration', [CustomerController::class, 'registration'])->name('customer.registration');
@@ -123,3 +126,6 @@ Route::group(['prefix' => 'admin'], function () {
         });
     });
 });
+});
+
+

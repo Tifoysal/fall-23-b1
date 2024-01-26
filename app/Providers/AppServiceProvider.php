@@ -30,6 +30,15 @@ class AppServiceProvider extends ServiceProvider
             $categories=Category::all();
             View::share('headerCategories',$categories);
         }
+
+
+        // if(session()->has('locale')){
+        //     $current_local=session()->get('locale');
+        // }else{
+        //     $current_local='en';
+        // }
+
+        // View::share('current_local',$current_local);
        
 
     }

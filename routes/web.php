@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use App\Http\Controllers\Frontend\SslCommerzPaymentController as FrontendSslCommerzPaymentController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -54,7 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [CustomerController::class, 'profile'])->name('profile.view');
     Route::get('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
     Route::get('/checkout',[CartController::class,'checkout'])->name('checkout');
-   
+
     Route::post('/order-place',[OrderController::class, 'orderPlace'])->name('order.place');
 
     // SSLCOMMERZ Start
@@ -71,7 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/ipn', [FrontendSslCommerzPaymentController::class, 'ipn']);
     //SSLCOMMERZ END
 
- 
+
     Route::get('/buy-now/{product_id}',[OrderController::class,'buyNow'])->name('buy.now');
     Route::get('/cancel-order/{product_id}',[OrderController::class,'cancelOrder'])->name('order.cancel');
 });
@@ -123,7 +124,19 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/product/create', [ProductController::class, 'createForm'])->name('product.create');
 
             Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+
+            //roles
+            Route::get('/roles/list', [RoleController::class, 'list'])->name('roles.list');
+            Route::get('/roles/form', [RoleController::class, 'createForm'])->name('roles.form');
+            Route::post('/roles/store', [RoleController::class, 'store'])->name('roles.store');
+            Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+            Route::post('/roles/edit/{id}', [RoleController::class, 'update'])->name('roles.edit');
+            Route::get('/roles/delete/{id}', [RoleController::class, 'delete'])->name('roles.delete');
+
+
+
         });
+
     });
 });
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -34,6 +35,7 @@ class UserController extends Controller
             // if(auth()->attempt($credentials))
 
             $login=auth()->attempt($credentials);
+
             if($login)
             {
                return redirect()->route('dashboard');
@@ -51,20 +53,21 @@ class UserController extends Controller
 
         auth()->logout();
         return redirect()->route('admin.login');
-        
+
     }
 
 
     public function list(){
 
-        $users=User::all();
+        $users = User::all();
         // dd($users);
         return view('admin.pages.users.list',compact('users'));
     }
 
     public function createForm()
     {
-        return view('admin.pages.users.create');
+        $roles = Role::all();
+        return view('admin.pages.users.create',compact('roles'));
     }
 
 
@@ -87,12 +90,12 @@ class UserController extends Controller
         {
             $file=$request->file('user_image');
             $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
-           
+
             $file->storeAs('/uploads',$fileName);
 
         }
 
-       
+
         User::create([
             'name'=>$request->user_name,
             'role'=>$request->role,

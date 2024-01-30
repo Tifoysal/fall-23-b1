@@ -19,10 +19,11 @@ class HomeController extends Controller
         }else{
             $customers=0;
         }
-       
-       
+
+
         return view('admin.pages.home',compact('customers'));
     }
+    
 
     public function aboutUs()
     {

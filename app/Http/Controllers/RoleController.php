@@ -43,7 +43,7 @@ class RoleController extends Controller
                 'status'=>$request->status,
             ]);
 
-            return redirect()->back();
+            return redirect()->route('roles.list')->with('message', 'Role Created successfully.');
 
         //insert into categories ('name','desctiption') values($request->category_name,$request->category_description)
 
@@ -55,7 +55,7 @@ class RoleController extends Controller
 
         public function edit($id){
             $data['getRecord']= Role::find($id);
-           
+
 
         return view('admin.pages.roles.edit',$data);
 
@@ -74,7 +74,7 @@ class RoleController extends Controller
         public function  delete($id){
             $delete=Role::find($id);
             $delete->delete();
-            return redirect()->back();
+            return redirect()->route('roles.list')->with('message', 'Role deleted successfully.');
         }
 
 }

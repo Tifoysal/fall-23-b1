@@ -4,7 +4,7 @@
 <h1>Roles List</h1>
 
 <a href="{{route('roles.form')}}" class="btn btn-success">Create New Roles</a>
-@include('admin.partials.message');
+@include('admin.partials.message')
 <table class="table">
   <thead>
     <tr>
@@ -24,8 +24,7 @@
       <td>{{$role->description}}</td>
       <td>{{$role->status}}</td>
       <td>
-        <a href="" class="btn btn-success">View</a>
-        <a href="{{ route('roles.edit', ['id' => $role->id]) }}" class="btn btn-warning">Edit</a>
+        <a href="{{ route('roles.edit',$role->id) }}" class="btn btn-warning">Edit</a>
         <a href="{{ route('roles.delete',$role->id) }}" onclick="return confirm('Are You sure want to delete?')" class="btn btn-danger">Delete</a>
       </td>
     </tr>

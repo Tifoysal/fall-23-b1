@@ -17,8 +17,8 @@
     <label for="status">Status </label>
     <select name="status" id="status" class="form-control" required>
         <option value="">Select Status</option>
-        <option {{old('status')== 'active' ? 'selected' :''}} value="active">Active</option>
-        <option {{old('status')== 'inactive' ? 'selected' :''}} value="inactive">Inactive</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
 
     </select>
 

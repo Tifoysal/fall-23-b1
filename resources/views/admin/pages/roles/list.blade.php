@@ -4,7 +4,7 @@
 <h1>Roles List</h1>
 
 <a href="{{route('roles.form')}}" class="btn btn-success">Create New Roles</a>
-@include('admin.partials.message');
+@include('admin.partials.message')
 <table class="table">
   <thead>
     <tr>

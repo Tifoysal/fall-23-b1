@@ -15,16 +15,16 @@ class RoleController extends Controller
 
         return view('admin.pages.roles.list', $data);
     }
+
+
     public function createForm()
     {
-
-
         return view('admin.pages.roles.form');
     }
+
+
     public function store(Request $request)
     {
-
-
         $validate=Validator::make($request->all(),
         [
             'name'=>'required',
@@ -35,6 +35,7 @@ class RoleController extends Controller
         if($validate->fails())
         {
             // dd($validate->getMessageBag());
+            notify()->error($validate->getMessageBag());
             return redirect()->back();
         }
 
@@ -44,7 +45,7 @@ class RoleController extends Controller
                 'status'=>$request->status,
             ]);
 
-            return redirect()->back();
+            return redirect()->route('roles.list')->with('message', 'Role Created successfully.');
 
         //insert into categories ('name','desctiption') values($request->category_name,$request->category_description)
 
@@ -56,7 +57,7 @@ class RoleController extends Controller
 
         public function edit($id){
             $data['getRecord']= Role::find($id);
-           
+
 
         return view('admin.pages.roles.edit',$data);
 
@@ -75,7 +76,7 @@ class RoleController extends Controller
         public function  delete($id){
             $delete=Role::find($id);
             $delete->delete();
-            return redirect()->back();
+            return redirect()->route('roles.list')->with('message', 'Role deleted successfully.');
         }
 
         public function assign($id)

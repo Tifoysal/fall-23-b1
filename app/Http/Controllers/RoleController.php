@@ -14,16 +14,16 @@ class RoleController extends Controller
 
         return view('admin.pages.roles.list', $data);
     }
+
+
     public function createForm()
     {
-
-
         return view('admin.pages.roles.form');
     }
+
+
     public function store(Request $request)
     {
-
-
         $validate=Validator::make($request->all(),
         [
             'name'=>'required',
@@ -34,6 +34,7 @@ class RoleController extends Controller
         if($validate->fails())
         {
             // dd($validate->getMessageBag());
+            notify()->error($validate->getMessageBag());
             return redirect()->back();
         }
 

@@ -73,6 +73,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $validate=Validator::make($request->all(),[
             'user_name'=>'required',
             'role'=>'required',
@@ -92,13 +93,11 @@ class UserController extends Controller
             $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
 
             $file->storeAs('/uploads',$fileName);
-
         }
-
 
         User::create([
             'name'=>$request->user_name,
-            'role'=>$request->role,
+            'role_id'=>$request->role,
             'image'=>$fileName,
             'email'=>$request->user_email,
             'password'=>bcrypt($request->user_password),

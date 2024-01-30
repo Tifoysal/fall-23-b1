@@ -126,13 +126,15 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
 
             //roles
-            Route::get('/roles/list', [RoleController::class, 'list'])->name('roles.list');
-            Route::get('/roles/form', [RoleController::class, 'createForm'])->name('roles.form');
-            Route::post('/roles/store', [RoleController::class, 'store'])->name('roles.store');
-            Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
-            Route::post('/roles/edit/{id}', [RoleController::class, 'update'])->name('roles.edit');
-            Route::get('/roles/delete/{id}', [RoleController::class, 'delete'])->name('roles.delete');
-
+            Route::group(['prefix'=>'roles','as'=>'roles.'],function(){
+                Route::get('/list', [RoleController::class, 'list'])->name('list');
+                Route::get('/form', [RoleController::class, 'createForm'])->name('form');
+                Route::post('/store', [RoleController::class, 'store'])->name('store');
+                Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('edit');
+                Route::post('/edit/{id}', [RoleController::class, 'update'])->name('edit');
+                Route::get('/delete/{id}', [RoleController::class, 'delete'])->name('delete');
+            }); 
+           
 
 
         });

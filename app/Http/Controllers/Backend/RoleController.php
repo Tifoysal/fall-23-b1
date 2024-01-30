@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use Illuminate\Support\Facades\Validator;
@@ -14,16 +15,16 @@ class RoleController extends Controller
 
         return view('admin.pages.roles.list', $data);
     }
+
+
     public function createForm()
     {
-
-
         return view('admin.pages.roles.form');
     }
+
+
     public function store(Request $request)
     {
-
-
         $validate=Validator::make($request->all(),
         [
             'name'=>'required',
@@ -34,6 +35,7 @@ class RoleController extends Controller
         if($validate->fails())
         {
             // dd($validate->getMessageBag());
+            notify()->error($validate->getMessageBag());
             return redirect()->back();
         }
 
@@ -75,6 +77,13 @@ class RoleController extends Controller
             $delete=Role::find($id);
             $delete->delete();
             return redirect()->route('roles.list')->with('message', 'Role deleted successfully.');
+        }
+
+        public function assign($id)
+        {
+            //dd($id);
+            $assign=Role::find($id);
+            return view ('admin.pages.roles.assignTask',compact('assign'));
         }
 
 }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->double('price');
             $table->text('description')->nullable();
-            $table->text('image')->nullable();
+            $table->string('image')->nullable();
             $table->string('status')->default('active');
             $table->integer('stock')->default(10);
             $table->timestamps();

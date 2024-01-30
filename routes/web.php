@@ -138,6 +138,7 @@ Route::group(['prefix' => 'admin'], function () {
            
 
             Route::get('/roles/assign/{id}', [RoleController::class, 'assign'])->name('roles.assign');
+            Route::get('/roles/test/', [RoleController::class, 'test'])->name('roles.test');
 
 
         });

@@ -10,18 +10,17 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
-    
+
     public function list()
     {
-
-        $categories=Category::all();
-       return view('admin.pages.category.list',compact('categories'));
+        $data['categories']=Category::all();
+       return view('admin.pages.category.list',$data);
     }
 
-    
+
     public function createForm()
     {
-       
+
         return view('admin.pages.category.form');
     }
 
@@ -41,7 +40,7 @@ class CategoryController extends Controller
             return redirect()->back();
         }
         //database create (one time) (done)
-            
+
         //table create (table generated from migration )---done
 
         //Data store query
@@ -58,7 +57,7 @@ class CategoryController extends Controller
         //insert into categories ('name','desctiption') values($request->category_name,$request->category_description)
 
 
-            //Query Builder 
+            //Query Builder
 
 
     }

@@ -24,6 +24,7 @@
       <td>{{$role->description}}</td>
       <td>{{$role->status}}</td>
       <td>
+      <a href="{{route('roles.assign',$role->id)}}" class="btn btn-primary">Assign</a>
         <a href="" class="btn btn-success">View</a>
         <a href="{{ route('roles.edit', ['id' => $role->id]) }}" class="btn btn-warning">Edit</a>
         <a href="{{ route('roles.delete',$role->id) }}" onclick="return confirm('Are You sure want to delete?')" class="btn btn-danger">Delete</a>

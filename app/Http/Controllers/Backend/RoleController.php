@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use Illuminate\Support\Facades\Validator;
@@ -75,6 +76,13 @@ class RoleController extends Controller
             $delete=Role::find($id);
             $delete->delete();
             return redirect()->back();
+        }
+
+        public function assign($id)
+        {
+            //dd($id);
+            $assign=Role::find($id);
+            return view ('admin.pages.roles.assignTask',compact('assign'));
         }
 
 }

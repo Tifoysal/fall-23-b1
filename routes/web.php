@@ -12,7 +12,8 @@ use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use App\Http\Controllers\Frontend\SslCommerzPaymentController as FrontendSslCommerzPaymentController;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -133,6 +134,8 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/roles/edit/{id}', [RoleController::class, 'update'])->name('roles.edit');
             Route::get('/roles/delete/{id}', [RoleController::class, 'delete'])->name('roles.delete');
 
+
+            Route::get('/roles/assign/{id}', [RoleController::class, 'assign'])->name('roles.assign');
 
 
         });

@@ -5,8 +5,8 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">{{__('Home')}}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">{{__('About')}}</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -44,6 +44,18 @@
                 <a href="{{route('customer.logout')}}">Logout </a> |
                 <a href="{{route('profile.view')}}"> {{auth()->user()->name}} ({{ auth()->user()->role }})</a>
                 @endauth
+
+                <select onchange="window.location.href=this.value;" name="" id="" class="form-control" style="width: min-content; margin-left:10px;">
+                    <option @if(session()->get('locale')=='en') selected @endif value="{{route('change.lang','en')}}">
+                      EN
+                    </option>
+                    <option @if(session()->get('locale')=='bn') selected @endif value="{{route('change.lang','bn')}}"> 
+                        BN
+                    </option>
+                    <option @if(session()->get('locale')=='ar') selected @endif value="{{route('change.lang','ar')}}">
+                         AR
+                    </option>
+                </select>
 
                 </div>
             </div>

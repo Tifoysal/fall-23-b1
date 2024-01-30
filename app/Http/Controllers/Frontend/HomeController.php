@@ -41,4 +41,11 @@ class HomeController extends Controller
         // $products=Product::whereIn('category_id',[4,5])->get();
         return view('frontend.pages.products-under-category',compact('productsUnderCategory'));
     }
+
+    public function changeLang($locale)
+    {
+        app()->setLocale($locale);
+        session()->put('locale',$locale);
+        return redirect()->route('home');
+    }
 }

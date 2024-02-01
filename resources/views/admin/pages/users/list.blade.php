@@ -10,8 +10,9 @@
 
 
 <div id="printDiv">
- 
+
 <h1>User List</h1>
+@include('admin.partials.message');
 <table class="table">
   <thead>
     <tr>
@@ -40,17 +41,17 @@
         </td>
 
     </tr>
-        
+
     @endforeach
 
 
-   
 
-    
+
+
   </tbody>
 </table>
 
- 
+
 </div>
 
 
@@ -59,9 +60,9 @@
 
 
 @push('yourJsCode')
-  
+
 <script type="text/javascript">
-      
+
       function printContent(el){
           var restorepage = $('body').html();
           var printcontent = $('#' + el).clone();
@@ -69,6 +70,6 @@
           window.print();
           $('body').html(restorepage);
       }
-  
+
   </script>
 @endpush

@@ -16,7 +16,7 @@ class ProductController extends Controller
             $products = Product::all();
             return $this->responseWithSuccess($products, 'All products list.');
         } catch (Throwable $ex) {
-            return $this->responseWithError($ex->getMessage());
+            return $this->responseWithError($ex->getMessage()); 
         }
     }
 

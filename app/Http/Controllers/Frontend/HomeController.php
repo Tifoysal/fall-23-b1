@@ -17,7 +17,7 @@ class HomeController extends Controller
     }
 
 
-    public function search(Request $request)
+    public function search(Request $request) 
     {
         // dd(request()->all())
 

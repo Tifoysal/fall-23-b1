@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -34,6 +35,7 @@ class UserController extends Controller
             // if(auth()->attempt($credentials))
 
             $login=auth()->attempt($credentials);
+
             if($login)
             {
                return redirect()->route('dashboard');
@@ -51,25 +53,32 @@ class UserController extends Controller
 
         auth()->logout();
         return redirect()->route('admin.login');
-        
+
     }
 
 
     public function list(){
 
+<<<<<<< HEAD
         $users=User::all();
         
+=======
+        $users = User::all();
+        // dd($users);
+>>>>>>> ddae8303a6d9a7b48ebfb3ea9fced3b2aff3e926
         return view('admin.pages.users.list',compact('users'));
     }
 
     public function createForm()
     {
-        return view('admin.pages.users.create');
+        $roles = Role::all();
+        return view('admin.pages.users.create',compact('roles'));
     }
 
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $validate=Validator::make($request->all(),[
             'user_name'=>'required',
             'role'=>'required',
@@ -87,15 +96,13 @@ class UserController extends Controller
         {
             $file=$request->file('user_image');
             $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
-           
-            $file->storeAs('/uploads',$fileName);
 
+            $file->storeAs('/uploads',$fileName);
         }
 
-       
         User::create([
             'name'=>$request->user_name,
-            'role'=>$request->role,
+            'role_id'=>$request->role,
             'image'=>$fileName,
             'email'=>$request->user_email,
             'password'=>bcrypt($request->user_password),

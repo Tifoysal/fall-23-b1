@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Dashboard Template · Bootstrap v5.2</title>
+    <title>Kodeeo Admin </title>
     @notifyCss
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
 
@@ -78,12 +78,12 @@
       }
     </style>
 
-    
+
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/5.2/examples/dashboard/dashboard.css" rel="stylesheet">
   </head>
   <body>
- 
+
 @include('admin.partials.header')
 
 <div class="container-fluid">
@@ -93,10 +93,10 @@
   @include('notify::components.notify')
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      
+
 
         @yield('content')
-      
+
     </main>
   </div>
 </div>
@@ -114,6 +114,6 @@
         @notifyJs
 
 @stack('yourJsCode')
- 
+
 </body>
 </html>

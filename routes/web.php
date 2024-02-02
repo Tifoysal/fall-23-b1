@@ -141,7 +141,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/roles/test/', [RoleController::class, 'test'])->name('roles.test');
 
             //permission
-            Route::get('permission-assign/',[PermissionController::class, 'permission'])->name('permission');
+            Route::get('permission-assign/',[PermissionController::class, 'permission'])->name('permission');  
 
 
         });

@@ -59,8 +59,13 @@ class UserController extends Controller
 
     public function list(){
 
+<<<<<<< HEAD
+        $users=User::all();
+        
+=======
         $users = User::all();
         // dd($users);
+>>>>>>> ddae8303a6d9a7b48ebfb3ea9fced3b2aff3e926
         return view('admin.pages.users.list',compact('users'));
     }
 

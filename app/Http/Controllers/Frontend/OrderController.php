@@ -29,9 +29,9 @@ class OrderController extends Controller
             'receiver_mobile' => $request->phone_number,
             'receiver_name' => $request->name,
             'receiver_email' => $request->email_address,
-            'transaction_id' =>date('YmdHis'),
+            'transaction_id' =>date('YmdHis'), 
 
-        ]);
+        ]);  
 
 
         // dd($cart);
@@ -42,7 +42,7 @@ class OrderController extends Controller
                 // 'product_id'=>$key,
                 'product_id' => $item['id'],
                 'quantity' => $item['quantity'],
-                'subtotal' => $item['subtotal'],
+                'subtotal' => $item['subtotal'],  
             ]);
         }
 
@@ -55,7 +55,14 @@ class OrderController extends Controller
         $this->payment($order);
         
         notify()->success('Order placed success.');
+<<<<<<< HEAD
+        return redirect()->back();   
+
+
+
+=======
         return redirect()->back();
+>>>>>>> e9fc120cda95aaeb1fefef1182a99cb6f1be77a9
     }
 
 

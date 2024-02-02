@@ -90,7 +90,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => 'auth'], function () {
 
-        Route::group(['middleware' => 'checkAdmin'], function () {
+        Route::group(['middleware' => 'checkAdmin'], function () { 
 
             Route::get('/logout', [UserController::class, 'logout'])->name('admin.logout');
             Route::get('/', [HomeController::class, 'home'])->name('dashboard');
@@ -139,6 +139,9 @@ Route::group(['prefix' => 'admin'], function () {
 
             Route::get('/roles/assign/{id}', [RoleController::class, 'assign'])->name('roles.assign');
             Route::get('/roles/test/', [RoleController::class, 'test'])->name('roles.test');
+
+            //permission
+            Route::get('permission-assign/',[PermissionController::class, 'permission'])->name('permission');  
 
 
         });

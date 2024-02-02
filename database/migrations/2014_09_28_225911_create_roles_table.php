@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->comment('manager,admin,user,customer,delivery_man');
             $table->text('description')->nullable();
-            $table->string('status')->default('active');
+            $table->string('status')->default('active'); 
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('roles');  
     }
 };

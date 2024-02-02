@@ -83,7 +83,7 @@ class RoleController extends Controller
         {
             //dd($id);
             $assign=Role::find($id);
-            return view ('admin.pages.roles.assignTask',compact('assign'));
+            return view ('admin.pages.roles.assignTask',compact('assign')); 
         }
 
 }

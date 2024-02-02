@@ -5,36 +5,16 @@
     <h1>Assign Permission for {{$assign->name}}</h1>
     <div class="row">
         <div class="col">
+            @foreach($permissions as $permission)
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="{{$permission->id}}" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    create category
-                </label>
+                    {{$permission->name}}  
+                </label> 
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    create brand
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    create product
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    create user
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                <label class="form-check-label" for="flexCheckChecked">
-                    delete user
-                </label>
-            </div>
+            @endforeach
+
+            
         </div>
     </div>
 </div>

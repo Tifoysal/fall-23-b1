@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('receiver_email')->nullable();
             $table->text('order_note')->nullable();
             $table->string('transaction_id')->unique();
-            $table->string('payment_status')->nullable();
-            $table->timestamps();
+            $table->string('payment_status')->nullable(); 
+            $table->timestamps(); 
         });
     }
 

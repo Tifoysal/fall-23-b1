@@ -137,11 +137,12 @@ Route::group(['prefix' => 'admin'], function () {
             }); 
            
 
-            Route::get('/roles/assign/{id}', [RoleController::class, 'assign'])->name('roles.assign');
+            // Route::get('/roles/assign/{id}', [RoleController::class, 'assign'])->name('roles.assign');
             Route::get('/roles/test/', [RoleController::class, 'test'])->name('roles.test');
 
             //permission
-            Route::get('permission-assign/',[PermissionController::class, 'permission'])->name('permission');  
+            Route::get('permission-assign/{role_id}',[PermissionController::class, 'permission'])->name('permission');  
+            Route::post('permission-assign/{role_id}',[PermissionController::class, 'AssignPermission'])->name('assign.permission');  
 
 
         });

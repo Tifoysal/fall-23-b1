@@ -12,6 +12,7 @@ class PermissionController extends Controller
 {
     public function permission($id){
         $all_permission= Permission::all();
+        //select * from permissions;
 
         $role=Role::with('permissions')->find($id);
        

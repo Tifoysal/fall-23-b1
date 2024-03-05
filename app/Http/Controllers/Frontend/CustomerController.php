@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -28,10 +29,9 @@ class CustomerController extends Controller
     {
         // dd($request->all());
 
-        User::create([
+        Customer::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'role'=>'customer',
             'password'=>bcrypt($request->password),
         ]);
 
@@ -62,7 +62,8 @@ class CustomerController extends Controller
         $credentials=$request->except('_token');
         // dd($credentials);
 
-        if(auth()->attempt($credentials))
+        
+        if(auth('customerGuard')->attempt($credentials))
         {
             notify()->success('Login Success.');
             return redirect()->route('home');

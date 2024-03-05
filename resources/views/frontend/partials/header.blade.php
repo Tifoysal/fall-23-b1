@@ -34,15 +34,15 @@
                         </a>
                   
 
-                @guest
+                @guest('customerGuard')
                     <a href="{{route('customer.login')}}" style="margin-left:5px ;">Login</a>
                     <span style="padding: 5px;">|</span>
                     <a href="{{route('customer.registration')}}">Registration</a>
                 @endguest
 
-                @auth
-                <a href="{{route('customer.logout')}}">Logout </a> |
-                <a href="{{route('profile.view')}}"> {{auth()->user()->name}} ({{ auth()->user()->role }})</a>
+                @auth('customerGuard')
+                <a href="{{route('customer.logout')}}" style="padding: 5px;">Logout </a> |
+                <a href="{{route('profile.view')}}" style="padding: 5px;"> {{auth('customerGuard')->user()->name}}</a>
                 @endauth
 
                 <select onchange="window.location.href=this.value;" name="" id="" class="form-control" style="width: min-content; margin-left:10px;">

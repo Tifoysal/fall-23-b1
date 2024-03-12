@@ -25,9 +25,6 @@
     <tr>
         <td>{{$key+1}}</td>
         <td>{{$customer->name}}</td>
-        <td>
-            <img style="border-radius: 60px;" width="7%" src="{{url('/uploads/'.$customer->image)}}" alt="">
-        </td>
         <td>{{$customer->email}}</td>
         <td>
             <a class="btn btn-success" href="">View</a>

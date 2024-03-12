@@ -7,7 +7,8 @@ use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Frontend\CartController;
-use App\Http\Controllers\Frontend\CustomerController;
+use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
+use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
@@ -37,11 +38,11 @@ Route::get('/', [FrontendHomeController::class, 'home'])->name('home');
 Route::get('/change-lang/{locale}', [FrontendHomeController::class, 'changeLang'])->name('change.lang');
 Route::get('/search-product',[FrontendHomeController::class,'search'])->name('product.search');
 
-Route::get('/registration', [CustomerController::class, 'registration'])->name('customer.registration');
-Route::post('/registration', [CustomerController::class, 'store'])->name('customer.store');
+Route::get('/registration', [FrontendCustomerController::class, 'registration'])->name('customer.registration');
+Route::post('/registration', [FrontendCustomerController::class, 'store'])->name('customer.store');
 
-Route::get('/login', [CustomerController::class, 'login'])->name('customer.login');
-Route::post('/login', [CustomerController::class, 'doLogin'])->name('customer.do.login');
+Route::get('/login', [FrontendCustomerController::class, 'login'])->name('customer.login');
+Route::post('/login', [FrontendCustomerController::class, 'doLogin'])->name('customer.do.login');
 
 Route::get('/single-product/{id}', [FrontendProductController::class, 'singleProductView'])->name('single.product');
 
@@ -53,8 +54,8 @@ Route::get('/cart-view',[CartController::class,'viewCart'])->name('cart.view');
 Route::get('/add-to-cart/{product_id}',[CartController::class,'addToCart'])->name('add.toCart');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/profile', [CustomerController::class, 'profile'])->name('profile.view');
-    Route::get('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
+    Route::get('/profile', [FrontendCustomerController::class, 'profile'])->name('profile.view');
+    Route::get('/logout', [FrontendCustomerController::class, 'logout'])->name('customer.logout');
     Route::get('/checkout',[CartController::class,'checkout'])->name('checkout');
 
     Route::post('/order-place',[OrderController::class, 'orderPlace'])->name('order.place');
@@ -100,6 +101,9 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/users/create', [UserController::class, 'createForm'])->name('users.create');
 
             Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+
+            Route::get('/customers/list', [CustomerController::class, 'list'])->name('customers.list');
+
 
             Route::get('/category/list', [CategoryController::class, 'list'])->name('category.list');
 

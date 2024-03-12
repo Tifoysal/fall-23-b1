@@ -48,7 +48,7 @@
           </li>
 
 		  <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">
+            <a class="nav-link" aria-current="page" href="{{route('customers.list')}}">
               <span data-feather="home" class="align-text-bottom"></span>
               Customer
             </a>

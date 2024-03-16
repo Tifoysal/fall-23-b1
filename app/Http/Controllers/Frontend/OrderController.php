@@ -55,14 +55,10 @@ class OrderController extends Controller
         $this->payment($order);
         
         notify()->success('Order placed success.');
-<<<<<<< HEAD
         return redirect()->back();   
 
 
 
-=======
-        return redirect()->back();
->>>>>>> e9fc120cda95aaeb1fefef1182a99cb6f1be77a9
     }
 
 

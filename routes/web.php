@@ -103,6 +103,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
 
             Route::get('/customers/list', [CustomerController::class, 'list'])->name('customers.list');
+            Route::get('/customers/list/datatable', [CustomerController::class, 'datatableData'])->name('customers.list.datatable');
 
 
             Route::get('/category/list', [CategoryController::class, 'list'])->name('category.list');

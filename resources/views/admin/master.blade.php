@@ -81,6 +81,10 @@
 
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/5.2/examples/dashboard/dashboard.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
   </head>
   <body>
 
@@ -111,6 +115,9 @@
 
 	  </script>
     <script src="https://getbootstrap.com/docs/5.2/examples/dashboard/dashboard.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
         @notifyJs
 
 @stack('yourJsCode')

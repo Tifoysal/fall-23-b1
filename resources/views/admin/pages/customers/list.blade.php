@@ -11,7 +11,8 @@
 
 <h1>Customer List</h1>
 @include('admin.partials.message');
-<table class="table">
+
+<table class="table" id="customarDataTable">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -21,25 +22,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach ($customers as $key=>$customer)
-    <tr>
-        <td>{{$key+1}}</td>
-        <td>{{$customer->name}}</td>
-        <td>{{$customer->email}}</td>
-        <td>
-            <a class="btn btn-success" href="">View</a>
-            <a class="btn btn-warning" href="">Edit</a>
-            <a  class="btn btn-danger"href="">Delete</a>
-        </td>
-
-    </tr>
-
-    @endforeach
-
-
-
-
-
+   
   </tbody>
 </table>
 
@@ -54,6 +37,26 @@
 @push('yourJsCode')
 
 <script type="text/javascript">
+    $(function () {
+          var table = $('#customarDataTable').DataTable({
+              processing: true,
+              serverSide: false,
+              ajax: "{{ route('customers.list.datatable') }}",
+              columns: [
+                  {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                  {data: 'name', name: 'name'},
+                  {data: 'email', name: 'email'},
+                  {data: 'action', name: 'action'},
+              ]
+          });
+        });
+</script>
+
+
+
+
+
+<script type="text/javascript">
 
       function printContent(el){
           var restorepage = $('body').html();
@@ -64,4 +67,6 @@
       }
 
   </script>
+
+
 @endpush
